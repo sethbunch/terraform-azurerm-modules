@@ -21,7 +21,7 @@ module "network_dev" {
 
   tags = {
     Environment        = "dev"
-    Owner              = "SB"
+    Owner              = "Terraform"
     DataClassification = "Confidential"
   }
 }
@@ -36,7 +36,7 @@ module "network_prod" {
 
   tags = {
     Environment        = "prod"
-    Owner              = "SB"
+    Owner              = "Terraform"
     DataClassification = "Confidential"
   }
 }
@@ -65,5 +65,23 @@ module "azure_policy" {
   tags = {
     Environment = "lab"
     Owner       = "Terraform"
+  }
+}
+
+module "defender_cloud" {
+  source                 = "./modules/soc2-defender-for-cloud"
+  name_prefix            = "soc2def"
+  security_contact_email = var.security_contact_email
+  security_contact_phone = var.security_contact_phone
+  
+
+  defender_plan_resource_types = ["CloudPosture", "VirtualMachines", "StorageAccounts"]
+
+  tags = {
+    Environment        = "lab"
+    ManagedBy          = "Terraform"
+    DataClassification = "Confidential"
+    Module             = "soc2-defender-for-cloud"
+    compliance         = "soc2-CC7.1"
   }
 }

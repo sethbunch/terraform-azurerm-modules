@@ -11,24 +11,30 @@ Each module is self-contained, variable-driven, and maps to specific SOC 2 trust
 | [azure-network](modules/azure-network/) | Resource Group, VNet, subnets, NSG | CC6.1 (Network Security) | ✅ Complete |
 | [soc2-activity-log](modules/soc2-activity-log/) | Activity Log diagnostics, Log Analytics, optional Event Hub streaming | CC7.2 (System Monitoring) | ✅ Complete |
 | [soc2-azure-policy](modules/soc2-azure-policy/) | Azure Policy definitions + assignments (allowed regions, required tags, block public storage) | CC6.1, CC6.6, CC7.1 | ✅ Complete |
+| [soc2-defender-for-cloud](modules/soc2-defender-for-cloud/) | Microsoft Defender for Cloud enablement, security contact, MDE integration, vulnerability scanning | CC7.1, CC7.2 | ✅ Complete |
 
 ### Planned
 
 | Module | Description | SOC 2 Criteria |
 |--------|-------------|----------------|
-| soc2-key-vault | Managed identities, Key Vault, secrets management | CC6.1, CC6.7 |
-| soc2-rbac | Role-based access control assignments, PIM-ready roles | CC6.1, CC6.2 |
-| soc2-backup | Backup vaults, retention policies, periodic snapshots | CC7.3 (Availability) |
-| soc2-network-security | NSG rules, DDoS protection, Private Endpoints | CC6.1, CC6.6 |
+| soc2-secure-score | Regulatory compliance dashboards, secure score monitoring | CC7.1, CC7.2 |
+| soc2-entra-id | Entra ID governance, PIM, Conditional Access | CC6.1, CC6.2 |
+| soc2-key-vault | Key Vault, managed HSM, key rotation | CC6.1, CC6.7 |
+| soc2-storage | Blob encryption, soft delete, immutability | CC6.1, CC6.6 |
+| soc2-sql-database | TDE, auditing, vulnerability assessment | CC6.1, CC6.7 |
+| soc2-vnet | NSGs, private subnets, flow logs, Azure Firewall | CC6.1, CC6.6 |
+| soc2-backup | Backup vault, policies, immutable storage | CC7.3 (Availability) |
+| soc2-sentinel | Sentinel workspace, analytics rules | CC7.1, CC7.2 |
 
 ## Architecture
 
 ```
 Root Module (main.tf)
-├── module "network_dev"     → azure-network (dev environment)
-├── module "network_prod"    → azure-network (prod environment)
-├── module "activity_log"    → soc2-activity-log (subscription-level logging)
-└── module "azure_policy"    → soc2-azure-policy (subscription-level policies)
+├── module "network_dev"      → azure-network (dev environment)
+├── module "network_prod"     → azure-network (prod environment)
+├── module "activity_log"     → soc2-activity-log (subscription-level logging)
+├── module "azure_policy"     → soc2-azure-policy (subscription-level policies)
+└── module "defender_cloud"   → soc2-defender-for-cloud (subscription-level threat protection)
 ```
 
 ## Provider
