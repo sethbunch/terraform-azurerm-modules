@@ -27,7 +27,7 @@ variable "tags" {
   description = "Standard compliance tags"
   type        = map(string)
   default = {
-    "compliance" = "soc2"
+    "Compliance" = "soc2"
   }
 }
 

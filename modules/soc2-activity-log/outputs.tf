@@ -17,3 +17,8 @@ output "log_analytics_workspace_customer_id" {
   description = "Customer ID of the Log Analytics Workspace (used by monitoring agents)"
   value       = azurerm_log_analytics_workspace.log_analytics.workspace_id
 }
+
+output "resource_group_name" {
+  description = "Name of the resource group hosting the SOC 2 logging stack"
+  value       = azurerm_resource_group.activity_log.name
+}

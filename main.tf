@@ -73,7 +73,7 @@ module "defender_cloud" {
   name_prefix            = "soc2def"
   security_contact_email = var.security_contact_email
   security_contact_phone = var.security_contact_phone
-  
+
 
   defender_plan_resource_types = ["CloudPosture", "VirtualMachines", "StorageAccounts"]
 
@@ -83,5 +83,33 @@ module "defender_cloud" {
     DataClassification = "Confidential"
     Module             = "soc2-defender-for-cloud"
     compliance         = "soc2-CC7.1"
+  }
+}
+
+
+module "secure-score" {
+  source                     = "./modules/soc2-secure-score"
+  name_prefix                = "soc2secscore"
+  resource_group_name        = module.activity_log.resource_group_name
+  location                   = "eastus2"
+  log_analytics_workspace_id = module.activity_log.log_analytics_workspace_id
+
+  # LAB OVERRIDE — adds streaming source for instant pipeline verification.
+  # Module default stays snapshot-only (lean/cost-sane for prod consumers).
+  # Remove "Assessments" from this list to return to default behavior.
+  event_sources = [
+    "RegulatoryComplianceAssessmentSnapshot",
+    "SecureScoreControlsSnapshot",
+    "SecureScoresSnapshot",
+    "Assessments",
+  ]
+
+  tags = {
+    Environment        = "lab"
+    Owner              = "Terraform"
+    ManagedBy          = "Terraform"
+    DataClassification = "Confidential"
+    Module             = "soc2-secure-score"
+    compliance         = "soc2-CC7.2"
   }
 }

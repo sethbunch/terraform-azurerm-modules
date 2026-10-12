@@ -4,7 +4,7 @@ variable "name_prefix" {
 }
 
 variable "location" {
-  description = "The specifiedlocation of the resource."
+  description = "The specified location of the resource."
   type        = string
   default     = "eastus2"
   validation {
