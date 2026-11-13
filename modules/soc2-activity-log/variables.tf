@@ -42,8 +42,3 @@ variable "enable_event_hub" {
   type        = bool
   default     = false
 }
-variable "allowed_subnet_ids" {
-  description = "Subnet IDs permitted to reach the log storage account (network rules default-deny). Empty list = no subnet access; platform Logging/Metrics/AzureServices bypasses remain."
-  type        = list(string)
-  default     = []
-}

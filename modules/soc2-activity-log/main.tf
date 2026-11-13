@@ -15,12 +15,6 @@ resource "azurerm_storage_account" "log_storage" {
   https_traffic_only_enabled = true
   min_tls_version            = "TLS1_2"
   tags                       = var.tags
-
-  network_rules {
-    default_action             = "Deny"
-    bypass                     = ["Logging", "Metrics", "AzureServices"]
-    virtual_network_subnet_ids = var.allowed_subnet_ids
-  }
 }
 
 resource "azurerm_log_analytics_workspace" "log_analytics" {
