@@ -20,18 +20,13 @@ jobs:
       - name: Trivy IaC + secret scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          scan-type: config
+          scan-type: fs
           scan-ref: .
+          scanners: misconfig,secret
           format: table
           exit-code: '1'
           severity: HIGH,CRITICAL
           ignore-unfixed: true
-      - name: Trivy secret scan
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          scan-type: secret
-          scan-ref: .
-          exit-code: '1'
 
   plan:
     needs: trivy
