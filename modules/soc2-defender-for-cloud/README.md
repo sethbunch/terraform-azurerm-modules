@@ -2,6 +2,11 @@
 
 Enables Microsoft Defender for Cloud across an Azure subscription with security alert routing, MDE integration, and vulnerability scanning.
 
+## Control Mapping
+| SOC 2 | ISO 27001:2022 | NIST 800-53 R5 |
+|-------|----------------|----------------|
+| CC7.1, CC7.2 (Vulnerability & Anomaly Detection) | A.8.16 (Monitoring Activities) | RA-5, SI-2 (Vulnerability Monitoring, Flaw Remediation) |
+
 ## Resources
 
 | Resource | Description |

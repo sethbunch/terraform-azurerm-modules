@@ -2,6 +2,11 @@
 
 Foundational networking module — creates a Resource Group, Virtual Network, two subnets (app + data), and a Network Security Group.
 
+## Control Mapping
+| SOC 2 | ISO 27001:2022 | NIST 800-53 R5 |
+|-------|----------------|----------------|
+| CC6.1 (Network Security) | A.8.20, A.8.22 (Network Security) | SC-7 (Boundary Protection) |
+
 ## Resources
 
 | Resource | Name | Description |

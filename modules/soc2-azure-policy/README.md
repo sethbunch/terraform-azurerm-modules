@@ -2,6 +2,11 @@
 
 Azure Policy module — deploys three custom policy definitions with subscription-level assignments to enforce compliance guardrails.
 
+## Control Mapping
+| SOC 2 | ISO 27001:2022 | NIST 800-53 R5 |
+|-------|----------------|----------------|
+| CC6.1, CC6.6, CC7.1 | A.8.9 (Classification of Information / control enforcement) | CM-2, AC-3 (Configuration Management, Access Enforcement) |
+
 ## Policies
 
 | Policy | Effect | Description |

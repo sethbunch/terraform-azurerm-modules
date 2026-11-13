@@ -2,6 +2,11 @@
 
 Exports Microsoft Defender for Cloud security posture (secure scores + regulatory compliance assessments) to Log Analytics and makes it visible through an Azure Workbook and a shared Portal dashboard. Modules 2 and 3 create the controls — this module proves they're working.
 
+## Control Mapping
+| SOC 2 | ISO 27001:2022 | NIST 800-53 R5 |
+|-------|----------------|----------------|
+| CC7.1, CC7.2, CC7.4 (Continuous Monitoring) | A.5.35 (Independent Review), A.8.16 | CA-7 (Continuous Monitoring) |
+
 Terraform builds the pipeline, not the number: there is no data source to read a secure score, so the pattern is **export (automation) → store (Log Analytics) → visualize (workbook/dashboard)**.
 
 ## Resources

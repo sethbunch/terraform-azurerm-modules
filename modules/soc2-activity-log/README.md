@@ -2,6 +2,11 @@
 
 Centralized logging module — deploys Activity Log diagnostic settings, a Log Analytics Workspace, a Storage Account for long-term log retention, and an optional Event Hub for SIEM streaming.
 
+## Control Mapping
+| SOC 2 | ISO 27001:2022 | NIST 800-53 R5 |
+|-------|----------------|----------------|
+| CC7.2 (System Monitoring) | A.8.15 (Logging) | AU-2, AU-4 (Audit Events, Audit Content) |
+
 ## Resources
 
 | Resource | Name | Description |
